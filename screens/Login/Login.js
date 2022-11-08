@@ -16,7 +16,7 @@ export default function Login() {
         email: { value: "", error: "" },
         password: { value: "", error: "" },
     });
-    const {setAuthenticated,setName } = useAuth();
+    const { setAuthenticated, setName } = useAuth();
     const [users, SetUsers] = React.useState([]);
     let navigation = useNavigation();
 
@@ -106,7 +106,7 @@ export default function Login() {
                 data
             );
             setAuthenticated(true);
-            console.log(res.data)
+            console.log(res.data);
             setName(res.data.customer.firstName);
             navigation.navigate("Home", { screen: "Explore" });
         } catch (err) {
@@ -176,11 +176,33 @@ export default function Login() {
                 </View>
                 <View className="flex justify-end mx-10 mt-10  w-3/4 self-center">
                     <TouchableOpacity
-                        className="bg-sky-800 text-center  text-white font-bold py-3  rounded-lg "
+                        className="bg-sky-500 text-center  text-white font-bold py-3  rounded-lg "
                         onPress={() => postSignInForm()}
                     >
                         <Text className="text-center text-white ">Sign in</Text>
                     </TouchableOpacity>
+                </View>
+                <View className="flex justify-end mx-10 mt-10  w-3/4 self-center">
+                    <TouchableOpacity
+                        className="text-center bg-sky-800  text-white font-bold py-3  rounded-lg "
+                        onPress={() =>
+                            navigation.navigate("Home", { screen: "Explore" })
+                        }
+                    >
+                        <Text className="text-center text-white ">Skip</Text>
+                    </TouchableOpacity>
+                </View>
+                <View>
+                    <Text className="text-center text-sky-200 mt-10">
+                        Don't have an account?
+                        <Text>Please </Text>
+                        <Text
+                            className="text-sky-400"
+                            onPress={() => navigation.navigate("Signup")}
+                        >
+                            Sign Up
+                        </Text>
+                    </Text>
                 </View>
             </View>
         </SafeAreaView>

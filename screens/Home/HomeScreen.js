@@ -19,8 +19,10 @@ const HomeScreen = () => {
     const navigation = useNavigation();
     const [modalVisible, setModalVisible] = useState(false)
 
+    
     useEffect(()=>{
-      setModalVisible(true);
+        setModalVisible(true);
+        setTimeout(() =>{setModalVisible(false)}, 1500)
     },[])
     const {
         popular,
@@ -38,6 +40,7 @@ const HomeScreen = () => {
             <ActivityIndicator size={"large"} color={"white"} />
         </SafeAreaView>;
     }
+    
     return (
         <SafeAreaView className="flex-1 bg-black">
             <ScrollView
@@ -57,15 +60,12 @@ const HomeScreen = () => {
                         setModalVisible(!modalVisible);
                     }}
                 >
-                    <View style={{backgroundColor:"rgb(15, 23, 42)",}} className=" grayscale self-center drop-shadow-2xl  my-28  w-2/3 rounded-2xl p-16">
+                    <View  className="  self-center  mt-4">
                         {!isAuthenticated ? (
-                            <Text className="text-lime-300">Hello</Text>
+                            <Text className="text-lime-300 text-lg font-bold">Hello</Text>
                         ) : (
                             <Text className="text-teal-300 text-lg font-bold">Hello {name}</Text>
                         )}
-                        <TouchableOpacity style={{backgroundColor:"rgb(40, 124, 167)"}} className="self-center mx-4 my-2 rounded-xl border-2 p-2 grayscale" onPress={()=>setModalVisible(false)} >
-                            <Text className="text-center text-white w-14">Close</Text>
-                        </TouchableOpacity>
                     </View>
                 </Modal>
                 <Header />

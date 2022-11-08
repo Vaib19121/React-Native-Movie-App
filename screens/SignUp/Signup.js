@@ -387,13 +387,25 @@ export default function Signup() {
                     />
                 </View>
 
-                <View className="flex justify-end mx-10 mt-10  w-3/4 self-center">
+                <View className="flex justify-end mx-10 mt-6  w-3/4 self-center">
                     <TouchableOpacity
                         className="bg-sky-800 text-center  text-white font-bold py-3  rounded-lg "
                         onPress={() => postSignUpForm()}
                     >
                         <Text className="text-center text-white ">Sign Up</Text>
                     </TouchableOpacity>
+                </View>
+                <View>
+                    <Text className="text-center text-sky-200 my-10">
+                       Already have an account? 
+                        <Text> Please </Text>
+                        <Text
+                            className="text-sky-400"
+                            onPress={() => navigation.navigate("Login")}
+                        >   
+                            Sign Up
+                        </Text>
+                    </Text>
                 </View>
             </View>
         </ScrollView>
