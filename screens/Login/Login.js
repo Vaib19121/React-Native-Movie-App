@@ -16,7 +16,7 @@ export default function Login() {
         email: { value: "", error: "" },
         password: { value: "", error: "" },
     });
-    const { setAuthenticated, setName } = useAuth();
+    const { setAuthenticated, setName,setLastName,setEmail } = useAuth();
     const [users, SetUsers] = React.useState([]);
     let navigation = useNavigation();
 
@@ -108,6 +108,8 @@ export default function Login() {
             setAuthenticated(true);
             console.log(res.data);
             setName(res.data.customer.firstName);
+            setEmail(res.data.customer.email);
+            setLastName(res.data.customer.lastName);
             navigation.navigate("Home", { screen: "Explore" });
         } catch (err) {
             alert("Login Failed-->", err);

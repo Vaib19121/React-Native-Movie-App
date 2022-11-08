@@ -2,11 +2,9 @@ import { TailwindProvider } from "tailwindcss-react-native";
 import 'react-native-gesture-handler';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer, DarkTheme } from "@react-navigation/native";
-import {MovieDeatil, ListingScreen } from "./screens";
+import {MovieDeatil, ListingScreen,Login, Signup } from "./screens";
 import { AuthProvider } from "./hooks/useAuth";
 import TabNavigator from "./navigation/tabnavigator";
-import Login from "./screens/Login/Login";
-import Signup from "./screens/SignUp/Signup";
 
 const Stack = createStackNavigator();
 

@@ -1,6 +1,6 @@
 import React from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { HomeScreen, SarchScreen } from "../screens";
+import { HomeScreen, SarchScreen,Profile } from "../screens";
 
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -17,6 +17,9 @@ const TabNavigator = () => {
             iconName = focused ? "home" : "home-outline";
           } else if (route.name === "Applied") {
             iconName = focused ? "search" : "search-outline";
+          }
+          else if (route.name === "Profile") {
+            iconName = focused ? "person" : "person-outline";
           }
           return <Ionicons name={iconName} size={size} color={color} />;
         },
@@ -41,6 +44,7 @@ const TabNavigator = () => {
     >
       <Tab.Screen name="Explore" component={HomeScreen} />
       <Tab.Screen name="Applied" component={SarchScreen} />
+      <Tab.Screen name="Profile" component={Profile} /> 
     </Tab.Navigator>
   );
 };

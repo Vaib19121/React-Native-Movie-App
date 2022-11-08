@@ -25,7 +25,9 @@ export const AuthProvider = ({ children }) => {
   const [trending, setTrending] = useState([]);
   const [isAuthenticated, setAuthenticated] = useState(false);
   const [name, setName] = useState('');
-
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  
   const getData = async () => {
     try {
       const nowPlaying = await axios.get(route.now_playing);
@@ -52,6 +54,12 @@ export const AuthProvider = ({ children }) => {
     wait(2000).then(() => setRefreshing(false));
   }, []);
 
+  const logOut = () =>{
+    setAuthenticated(false);
+    setName('');
+    setLastName('');
+    setEmail('');
+  }
   useEffect(() => {
     getData();
   }, []);
@@ -69,7 +77,12 @@ export const AuthProvider = ({ children }) => {
       isAuthenticated,
       setAuthenticated,
       name,
-      setName
+      setName,
+      lastName,
+      setLastName,
+      email,
+      setEmail,
+      logOut
     }),
     [
       loading,
@@ -83,7 +96,12 @@ export const AuthProvider = ({ children }) => {
       isAuthenticated,
       setAuthenticated,
       name,
-      setName
+      setName,
+      lastName,
+      setLastName,
+      email,
+      setEmail,
+      logOut
     ]
   );
   return (

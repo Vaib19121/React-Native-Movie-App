@@ -22,7 +22,7 @@ export default function Signup() {
         gender: { value: "", error: "" },
         hearAboutUs: { value: "", error: "" },
     });
-    const {setAuthenticated } = useAuth();
+    const {setAuthenticated, setName,setLastName,setEmail} = useAuth();
     const genders = ["male", "female", "non-binary"];
 
     let navigation = useNavigation();
@@ -161,6 +161,9 @@ export default function Signup() {
                 data
             );
             console.log(res.data);
+            setName(res.data.customer.firstName);
+            setEmail(res.data.customer.email);
+            setLastName(res.data.customer.lastName);
             setAuthenticated(true);
             navigation.navigate("Home", { screen: "Explore" });
         } catch (err) {
