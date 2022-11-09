@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import { route } from "../routes";
 import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const AuthContext = createContext({});
 
@@ -55,11 +56,12 @@ export const AuthProvider = ({ children }) => {
     wait(2000).then(() => setRefreshing(false));
   }, []);
 
-  const logOut = () =>{
+  const logOut =async () =>{
     setAuthenticated(false);
     setName('');
     setLastName('');
     setEmail('');
+    await AsyncStorage.clear();
   }
   useEffect(() => {
     getData();

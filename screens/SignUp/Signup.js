@@ -1,14 +1,14 @@
+import React from "react";
 import {
     View,
     Text,
     TextInput,
     TouchableOpacity,
     ScrollView,
-    AsyncStorage
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import SelectDropdown from "react-native-select-dropdown";
-import React from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 import useAuth from '../../hooks/useAuth'
 
@@ -158,10 +158,11 @@ export default function Signup() {
             console.log(data);
 
             const res = await axios.post(
-                "http://192.168.43.235:3000/api/customer/signup",
+                "http://192.168.49.247:3000/api/customer/signup",
                 data
             );
-            await AsyncStorage.setItem("userData", res.data);
+
+            await AsyncStorage.setItem("userData", JSON.stringify(res.data.customer));
             setName(res.data.customer.firstName);
             setEmail(res.data.customer.email);
             setLastName(res.data.customer.lastName);

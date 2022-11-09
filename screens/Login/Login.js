@@ -4,9 +4,9 @@ import {
     TextInput,
     TouchableOpacity,
     SafeAreaView,
-    AsyncStorage,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import React from "react";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
@@ -99,14 +99,16 @@ export default function Login() {
             }
 
             const data = extractSignInFormData();
-            // console.log(data);
+            console.log(data);
 
             const res = await axios.post(
-                "http://192.168.43.235:3000/api/customer/login",
+                "http://192.168.49.247:3000/api/customer/login",
                 data
             );
             setAuthenticated(true);
-            await AsyncStorage.setItem("userData", res.data);
+            console.log(res.data);
+            
+            await AsyncStorage.setItem("userData", JSON.stringify(res.data.customer));
             setName(res.data.customer.firstName);
             setEmail(res.data.customer.email);
             setLastName(res.data.customer.lastName);
