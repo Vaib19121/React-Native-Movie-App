@@ -106,7 +106,7 @@ export default function Login() {
                 data
             );
             setAuthenticated(true);
-            console.log(res.data);
+            await AsyncStorage.setItem("userData", res.data);
             setName(res.data.customer.firstName);
             setEmail(res.data.customer.email);
             setLastName(res.data.customer.lastName);

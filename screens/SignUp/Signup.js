@@ -4,6 +4,7 @@ import {
     TextInput,
     TouchableOpacity,
     ScrollView,
+    AsyncStorage
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import SelectDropdown from "react-native-select-dropdown";
@@ -160,7 +161,7 @@ export default function Signup() {
                 "http://192.168.43.235:3000/api/customer/signup",
                 data
             );
-            console.log(res.data);
+            await AsyncStorage.setItem("userData", res.data);
             setName(res.data.customer.firstName);
             setEmail(res.data.customer.email);
             setLastName(res.data.customer.lastName);

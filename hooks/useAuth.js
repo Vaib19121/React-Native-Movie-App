@@ -27,6 +27,7 @@ export const AuthProvider = ({ children }) => {
   const [name, setName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+
   
   const getData = async () => {
     try {
@@ -82,7 +83,7 @@ export const AuthProvider = ({ children }) => {
       setLastName,
       email,
       setEmail,
-      logOut
+      logOut,
     }),
     [
       loading,
@@ -101,7 +102,7 @@ export const AuthProvider = ({ children }) => {
       setLastName,
       email,
       setEmail,
-      logOut
+      logOut,
     ]
   );
   return (
